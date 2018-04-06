@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <header>
- <title>Landmarks</title>
+ <title>Figures</title>
  <style>
 header, footer {
     padding: 1em;
@@ -22,15 +22,18 @@ article {
 
 <body>
  <article>
-  <h1>Landmarks</h1>
-  <%@landmarks.all.each do |landmark|%>
-    <h2><a href="/landmarks/<%=landmark.id%>"><%=landmark.name%></a></h2>
-    <p>Year Completed: <%=landmark.year_completed%></p>
+  <h1>Figures</h1>
+  <%@figures.all.each do |figure|%>
+  <ul>
+   <li>
+    <h2><a href="/figures/<%=figure.id%>"><%=figure.name%></a></h2>
+   </li>
+  </ul>
   <%end%>
   
   <br><br>
-  <form action="/landmarks/new">
-   <input type="submit" value="Create New Landmark">
+  <form action="/figures/new">
+   <input type="submit" value="Create New Figure">
   </form>
   
 </article>

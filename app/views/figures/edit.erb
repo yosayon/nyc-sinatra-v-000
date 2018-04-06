@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<header>
+ <title>Edit a Figure</title>
+ <style>
+
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+   
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+</style>
+</header>
+
+<body>
+ <article>
+   <h3>Edit Figure:</h3>
+   <form action="/figures/<%=@figure.id%>" method="POST">
+    <input type="hidden" name="_method" value="patch">
+    
+    <p><b>Edit Name</b></p>
+    <label for="figure_name">Name:</label>
+    <input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>">
+    
+    <br><br>
+    
+    <p><b>Edit Title(s)</b></p>
+    <%Title.all.each do |title|%>
+    <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="<%=title.name%>" <%='checked' if @figure.titles.include?(title)%>><%=title.name%></input>
+    <%end%>
+    
+    <p><b>Edit landmark(s)</b></p>
+    <%Landmark.all.each do |landmark|%>
+    <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="<%=landmark.name%>" <%='checked' if @figure.landmarks.include?(landmark)%>><%=landmark.name%></input>
+    <%end%>
+   
+    <br><br>
+    
+    <p><b>Create a New Title</b></p>
+    <label for="new_title">New Title:</label>
+    <input type="text" name="title[name]" id="new_title">
+    
+    <br><br>
+    
+    <p><b>Create a New Landmark</b></p>
+    <label for="new_landmark">Landmark Name:</label>
+    <input type="text" name="landmark[name]" id="new_landmark">
+    <label for="year_completed">Year Completed:</label>
+    <input type="text" name="landmark[year_completed]" id="year_completed">
+   
+    <br><br>
+    
+    <input type="submit" value="Edit Figure">
+   </form>
+  
+</article>
+</body>
+</html>

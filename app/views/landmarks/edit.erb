@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<header>
+ <title>Edit a Figure</title>
+ <style>
+
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+   
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+</style>
+</header>
+
+<body>
+ <article>
+   <h3>Edit Landmark:</h3>
+   <form action="/landmarks/<%=@landmark.id%>" method="POST">
+    <input type="hidden" name="_method" value="patch">
+    
+    <p><b>Edit Name</b></p>
+    <label for="name">Name:</label>
+    <input type="text" name="landmark[name]" id="name" value="<%=@landmark.name%>">
+    <label for="year_completed">Year Completed:</label>
+    <input type="text" name="landmark[year_completed]" value="<%=@landmark.year_completed%>" id="year_completed">
+    
+   
+    <br><br>
+    
+    <input type="submit" value="Edit Landmark">
+   </form>
+  
+</article>
+</body>
+</html>
